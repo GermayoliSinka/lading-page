@@ -1,6 +1,12 @@
+// src/app/layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+// src/app/layout.tsx o pages/_app.tsx
+import '@fortawesome/fontawesome-svg-core/styles.css';
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +22,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} antialiased`}>
+        <Navbar />
+        <main className="main-container">
+          {children}
+        </main>
+        <Footer />
+      </body>
     </html>
   );
 }
