@@ -12,8 +12,9 @@ export default function Home() {
 
   const images = [
     '/images/im1.jpg',
-    '/images/im4.jpg',
+    '/images/im2.webp',
     '/images/im3.jpg',
+    '/images/im4.jpg',
   ];
 
   const [books, setBooks] = useState<any[]>([]);
