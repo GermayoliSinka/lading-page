@@ -18,9 +18,12 @@ const BookCard: React.FC<BookCardProps> = ({ id, title, authors, description, im
                     <Image
                         src={imageUrl}
                         alt={title}
-                        layout="fill"
-                        objectFit="cover"
                         className="rounded-md"
+                        width={600}  // Especifica el ancho de la imagen
+                        height={800} // Especifica la altura de la imagen
+                        priority // Marca esta imagen como de alta prioridad
+                        layout="responsive" // Ajusta el diseño para mejorar la adaptabilidad
+                        style={{ objectFit: 'cover' }} // Controla el ajuste de la imagen
                     />
                 </div>
                 <div className="flex flex-col flex-grow p-4">
@@ -33,7 +36,6 @@ const BookCard: React.FC<BookCardProps> = ({ id, title, authors, description, im
                     <p className="text-sm mb-2 text-gray-600 flex-grow truncated-description">
                         {description}
                     </p>
-
                     <div className="flex flex-col justify-between">
                         <p className="font-semibold text-blue-600">Rating: {rating}</p>
                         <p className="text-gray-500 mt-2">Author: <span className="text-red-500">{authors}</span></p>

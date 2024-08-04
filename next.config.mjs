@@ -1,9 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: 'export',
+    distDir: 'dist',
     reactStrictMode: true,
     images: {
-        domains: ['images.gr-assets.com'], // Agrega aquí los dominios permitidos
+        unoptimized: true,
+        domains: ['images.gr-assets.com'],
     },
 };
 

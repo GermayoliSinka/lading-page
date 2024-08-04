@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 
 interface CarouselProps {
@@ -11,22 +11,22 @@ interface CarouselProps {
 const Carrusel: React.FC<CarouselProps> = ({ images, height }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    const nextSlide = () => {
+    const nextSlide = useCallback(() => {
         setCurrentIndex((prevIndex) =>
             prevIndex === images.length - 1 ? 0 : prevIndex + 1
         );
-    };
+    }, [images.length]);
 
-    const prevSlide = () => {
+    const prevSlide = useCallback(() => {
         setCurrentIndex((prevIndex) =>
             prevIndex === 0 ? images.length - 1 : prevIndex - 1
         );
-    };
+    }, [images.length]);
 
     useEffect(() => {
         const interval = setInterval(nextSlide, 5000);
         return () => clearInterval(interval);
-    }, []);
+    }, [nextSlide, images.length]); // Añadido images.length como dependencia
 
     return (
         <div css={carouselContainerStyles}>
@@ -58,7 +58,7 @@ const Carrusel: React.FC<CarouselProps> = ({ images, height }) => {
     );
 };
 
-/*  arreglar esta parte , sacar a otro carrusel.css*/
+// Estilos
 const carouselContainerStyles = css`
     position: relative;
     width: 100%;
