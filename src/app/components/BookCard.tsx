@@ -12,18 +12,17 @@ interface BookCardProps {
 
 const BookCard: React.FC<BookCardProps> = ({ id, title, authors, description, imageUrl, rating }) => {
     return (
-        <div className="bg-white p-4 rounded-lg shadow-md flex flex-col" style={{ minHeight: '500px' }}>
+        <div className="bg-white p-4 rounded-lg shadow-md flex flex-col" style={{ minHeight: '500px', maxWidth: '300px' }}>
             <Link href={`/book/${id}`} className="flex flex-col h-full">
-                <div className="relative w-full" style={{ height: '300px' }}>
+                <div className="relative w-full" style={{ height: '400px' }}>
                     <Image
                         src={imageUrl}
                         alt={title}
                         className="rounded-md"
-                        width={600}  // Especifica el ancho de la imagen
-                        height={800} // Especifica la altura de la imagen
+                        width={300} // Especifica el ancho de la imagen
+                        height={400} // Especifica la altura de la imagen
                         priority // Marca esta imagen como de alta prioridad
-                        layout="responsive" // Ajusta el diseño para mejorar la adaptabilidad
-                        style={{ objectFit: 'cover' }} // Controla el ajuste de la imagen
+                        style={{ objectFit: 'cover', width: '100%', height: '100%' }} // Ajusta el tamaño para que llene el contenedor
                     />
                 </div>
                 <div className="flex flex-col flex-grow p-4">
@@ -36,7 +35,7 @@ const BookCard: React.FC<BookCardProps> = ({ id, title, authors, description, im
                     <p className="text-sm mb-2 text-gray-600 flex-grow truncated-description">
                         {description}
                     </p>
-                    <div className="flex flex-col justify-between">
+                    <div className="flex flex-col justify-between mt-auto">
                         <p className="font-semibold text-blue-600">Rating: {rating}</p>
                         <p className="text-gray-500 mt-2">Author: <span className="text-red-500">{authors}</span></p>
                     </div>
