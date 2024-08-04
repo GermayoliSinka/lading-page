@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 interface CarouselProps {
     images: string[];
-    height: string; 
+    height: string;
 }
 
 const Carrusel: React.FC<CarouselProps> = ({ images, height }) => {
@@ -26,7 +26,7 @@ const Carrusel: React.FC<CarouselProps> = ({ images, height }) => {
     useEffect(() => {
         const interval = setInterval(nextSlide, 5000);
         return () => clearInterval(interval);
-    }, [nextSlide, images.length]); // Añadido images.length como dependencia
+    }, [nextSlide]);
 
     return (
         <div css={carouselContainerStyles}>
@@ -34,13 +34,14 @@ const Carrusel: React.FC<CarouselProps> = ({ images, height }) => {
                 &#10094;
             </button>
             <div css={carouselSlideStyles(height)}>
-                <Image
-                    src={images[currentIndex]}
-                    alt={`Slide ${currentIndex + 1}`}
-                    layout="fill"
-                    objectFit="cover"
-                    css={imageStyles}
-                />
+                <div css={imageWrapperStyles}>
+                    <Image
+                        src={images[currentIndex]}
+                        alt={`Slide ${currentIndex + 1}`}
+                        layout="fill"
+                        objectFit="cover"
+                    />
+                </div>
             </div>
             <button css={arrowStyles('right')} onClick={nextSlide}>
                 &#10095;
@@ -74,11 +75,10 @@ const carouselSlideStyles = (height: string) => css`
     overflow: hidden;
 `;
 
-const imageStyles = css`
+const imageWrapperStyles = css`
+    position: relative;
     width: 100%;
     height: 100%;
-    object-fit: cover; /*cubrir el contenedor */
-    display: block;
 `;
 
 const arrowStyles = (direction: 'left' | 'right') => css`
@@ -118,3 +118,4 @@ const activeDotStyles = css`
 `;
 
 export default Carrusel;
+
