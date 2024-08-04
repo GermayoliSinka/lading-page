@@ -11,10 +11,10 @@ const ITEMS_PER_PAGE = 10;
 export default function Home() {
 
   const images = [
-    '/images/im1.jpg',
-    '/images/im2.webp',
-    '/images/im3.jpg',
-    '/images/im4.jpg',
+    'https://www.opinion.com.bo/asset/thumbnail,992,558,center,center/media/opinion/images/2024/06/26/2024062622070850747.jpg', // Reemplaza con la URL de la imagen de Google
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkfFZ-3HtJW-0rKYhgWQ-WwttrzrqWeVxtSIfvB4ZLs_T5xYFbQR1kDoTd42yJ11ydqFk&usqp=CAU', // Reemplaza con la URL de la imagen de Google
+    'https://cloudfront-us-east-1.images.arcpublishing.com/prisaradiomx/HNY6EECV6VKEZOCDQ2CBE4XQOA.jpg', // Reemplaza con la URL de la imagen de Google
+    'https://cdn-3.expansion.mx/dims4/default/4e894c2/2147483647/strip/true/crop/1797x1021+0+0/resize/1800x1023!/format/webp/quality/80/?url=https%3A%2F%2Fcdn-3.expansion.mx%2F46%2Ff0%2F9c8395ab415ba05189bd43827a9e%2Fferia-del-libro-2022.jpg', // Reemplaza con la URL de la imagen de Google
   ];
 
   const [books, setBooks] = useState<any[]>([]);
